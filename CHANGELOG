@@ -1,0 +1,13 @@
+CHANGELOG
+========= 
+
+## v0.3.0
+- Added temporal and intervention methods and wired CLI access.
+- Added `temporal_structural` and `rl_interventions` execution pathways.
+- Updated CLI output and default artifact naming.
+- Removed milestone branding from tracked docs/code references.
+
+## v0.2.0
+- Added core structural operators and benchmark harness.
+- Added link prediction and percolation methods.
+- Added initial CLI and dataset ingestion pipeline.
