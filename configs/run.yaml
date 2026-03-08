@@ -3,4 +3,4 @@ method: supracentrality
 epochs: 3
 batch_size: 256
 device: cpu
-out: artifacts/m1_supracentrality.json
+out: artifacts/run_supracentrality.json
