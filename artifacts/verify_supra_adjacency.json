@@ -1,0 +1,16 @@
+{
+  "method": "supra_adjacency",
+  "runtime_s": 0.2696159170009196,
+  "peak_mem_mb": 37.667179107666016,
+  "payload": {
+    "method": "supra_adjacency",
+    "values": "[0.2 0.2 2.2 ... 0.2 0.2 0.2]",
+    "meta": {
+      "shape": [
+        983512,
+        983512
+      ],
+      "nnz": 989234
+    }
+  }
+}

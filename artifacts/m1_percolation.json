@@ -1,0 +1,13 @@
+{
+  "method": "percolation",
+  "runtime_s": 0.10261408297810704,
+  "peak_mem_mb": 70.59236812591553,
+  "payload": {
+    "method": "percolation",
+    "values": "[0.00101992]",
+    "meta": {
+      "removed": 19712,
+      "largest_component_fraction": 0.0010199211454658642
+    }
+  }
+}

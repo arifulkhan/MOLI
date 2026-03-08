@@ -1,0 +1,16 @@
+{
+  "method": "supra_laplacian",
+  "runtime_s": 0.4429992089862935,
+  "peak_mem_mb": 49.76375865936279,
+  "payload": {
+    "method": "supra_laplacian",
+    "values": "[0.2 0.2 2.2 ... 0.2 0.2 0.2]",
+    "meta": {
+      "shape": [
+        983512,
+        983512
+      ],
+      "trace": 203652.609375
+    }
+  }
+}

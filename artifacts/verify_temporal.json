@@ -1,0 +1,18 @@
+{
+  "method": "temporal_structural",
+  "runtime_s": 0.023153165995609015,
+  "peak_mem_mb": 7.522974014282227,
+  "payload": {
+    "method": "temporal_structural",
+    "values": "[38.382286]",
+    "meta": {
+      "lambda_tv": 0.1,
+      "state": "degree",
+      "num_nodes": 491756,
+      "layers": [
+        1,
+        2
+      ]
+    }
+  }
+}

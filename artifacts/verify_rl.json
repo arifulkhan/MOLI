@@ -1,0 +1,23 @@
+{
+  "method": "rl_interventions",
+  "runtime_s": 1.8160427499969956,
+  "peak_mem_mb": 35.661067962646484,
+  "payload": {
+    "method": "rl_interventions",
+    "values": "[5. 5. 5. 5. 4.]",
+    "meta": {
+      "episodes": 5,
+      "max_steps": 6,
+      "epsilon": 0.2,
+      "mean_return": 4.800000190734863,
+      "layer_visits": [
+        29.0,
+        1.0
+      ],
+      "layer_ids": [
+        1,
+        2
+      ]
+    }
+  }
+}

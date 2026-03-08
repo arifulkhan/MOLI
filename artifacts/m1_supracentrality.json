@@ -1,0 +1,13 @@
+{
+  "method": "supracentrality",
+  "runtime_s": 0.212507791002281,
+  "peak_mem_mb": 53.51621437072754,
+  "payload": {
+    "method": "supracentrality",
+    "values": "[1.0167644e-06 1.0167644e-06 5.4182300e-07 ... 1.0167644e-06 1.0167644e-06\n 1.7785990e-07]",
+    "meta": {
+      "alpha": 0.85,
+      "iter": 50
+    }
+  }
+}
