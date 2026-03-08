@@ -5,3 +5,5 @@ data/**/*.pkl
 data/**/*.mat
 
 *.md
+!README.md
+data/**/README.md
