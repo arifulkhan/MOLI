@@ -61,7 +61,7 @@ def run():
     p.add_argument("--max-steps", type=int, default=10)
     p.add_argument("--epsilon", type=float, default=0.2)
     p.add_argument("--device", default="cpu")
-    p.add_argument("--out", default="artifacts/m1_report.json")
+    p.add_argument("--out", default="artifacts/moli_report.json")
     args = p.parse_args()
 
     cfg = build_framework_config(args)
@@ -102,7 +102,7 @@ def run():
         result = run_with_benchmark(args.method, method.run, train, valid)
 
     write_report(args.out, result)
-    print(f"M1 run finished: {args.method}")
+    print(f"Run finished: {args.method}")
     print(f"runtime_s: {result.runtime_s:.4f}")
     print(f"peak_mem_mb: {result.peak_mem_mb:.3f}")
 

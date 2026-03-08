@@ -1,4 +1,4 @@
-"""Lightweight multilayer framework for M1 milestone."""
+"""Lightweight multilayer framework for multilayer graph experiments."""
 
 from .core.config import FrameworkConfig, DatasetConfig, MethodConfig
 from .core.loader import MultiLayerDataset

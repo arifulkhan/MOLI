@@ -2,13 +2,13 @@
 
 **M**ultilayer **O**rchestration for **L**ayered **I**nference (MOLI)
 
-MOLI is a lightweight, PyTorch-first experimental framework for layered/multiplex graph analysis. It provides:
+MOLI is a lightweight, PyTorch-first framework for layered and multiplex graph experiments. It provides:
 
 - Core structural operators on multilayer graphs (supra-adjacency, Laplacian, random-walk transitions)
-- Supervised and unsupervised-style baselines (link prediction, percolation)
-- Additional milestone methods:
-  - `temporal_structural` (M3)
-  - `rl_interventions` (M4)
+- Learning and evaluation baselines (link prediction, percolation)
+- Additional methods:
+  - `temporal_structural`
+  - `rl_interventions`
 - Consistent benchmarking wrapper (runtime + peak memory + payload)
 - Reproducible dataset ingestion from simple text files
 
@@ -40,7 +40,7 @@ pip install -U pip
 pip install numpy torch scipy
 ```
 
-Optional (recommended for notebooks / exploration):
+Optional (recommended for exploration):
 
 ```bash
 pip install scikit-learn matplotlib
@@ -50,16 +50,13 @@ pip install scikit-learn matplotlib
 
 ```text
 AI/graph/multilayer/
-├─ README_M1.md                 # M1 milestone quick-run examples
-├─ implementation.md            # milestone notes and what was completed
-├─ implementation_plan.md        # roadmap
 ├─ src/
 │  └─ multilayer_framework/
 │     ├─ cli/runner.py          # CLI entry and method orchestration
 │     ├─ core/                  # dataset loading + graph core + registry/config
-│     ├─ methods/               # algo implementations
+│     ├─ methods/               # algorithm implementations
 │     ├─ bench/runner.py        # benchmark wrapper
-│     ├─ metrics.py             # simple evaluation helpers
+│     ├─ metrics.py             # evaluation helpers
 │     └─ main.py                # module entrypoint
 ├─ data/                       # dataset folders
 ├─ configs/                    # optional experiment configs
@@ -77,7 +74,7 @@ python -m src.multilayer_framework.main \
   --dataset data/GATNE-Example \
   --method supracentrality \
   --epochs 3 \
-  --out artifacts/m1_supracentrality.json
+  --out artifacts/moli_supracentrality.json
 ```
 
 The framework supports options:
@@ -100,16 +97,16 @@ The framework supports options:
 
 ### Data format
 
-`train.txt`, `valid.txt`, and `test.txt` are expected to contain one edge per line:
+`train.txt`, `valid.txt`, and `test.txt` contain one edge per line:
 
 - Train: `layer source target`
 - Valid/Test (if used for link prediction): `layer source target label`
 
-You can use the included datasets under `data/`, e.g. `data/GATNE-Example`.
+Use datasets under `data/`, for example `data/GATNE-Example`.
 
 ## Main Use Cases
 
-All runs print a simple status line (`M1 run finished: ...`) and metrics summary in the terminal.
+All runs print a completion line (`Run finished: <method>`) and timing summary in the terminal.
 
 ### 1) Structural methods
 
@@ -127,11 +124,18 @@ python -m src.multilayer_framework.main --dataset data/GATNE-Example --method pe
 python -m src.multilayer_framework.main --dataset data/GATNE-Example --method link_prediction --epochs 2 --out artifacts/demo_link_pred.json
 ```
 
-### 3) M3 and M4
+### 3) Temporal structure and intervention methods
 
 ```bash
 python -m src.multilayer_framework.main --dataset data/GATNE-Example --method temporal_structural --out artifacts/demo_temporal_structural.json
 python -m src.multilayer_framework.main --dataset data/GATNE-Example --method rl_interventions --episodes 20 --max-steps 10 --out artifacts/demo_rl_interventions.json
+```
+
+If you want two saved run packs, use `m1`/`m2` suffixes when passing `--out`:
+
+```bash
+python -m src.multilayer_framework.main --dataset data/GATNE-Example --method supracentrality --out artifacts/m1.json
+python -m src.multilayer_framework.main --dataset data/GATNE-Example --method rl_interventions --episodes 20 --out artifacts/m2.json
 ```
 
 ## Expected Outcomes
@@ -158,13 +162,13 @@ Notes per method:
 
 - `supra_adjacency` / `supra_laplacian`
   - `payload.values` contains adjacency/diagonal summary arrays
-  - `meta.shape` and sparsity/traces are included
+  - `meta.shape` and summary metrics are included
 - `random_walk`
-  - returns a probability-like vector after a few steps and `meta.n_steps`
+  - returns a probability-like vector and `meta.n_steps`
 - `percolation`
   - returns one value: largest connected component fraction after node removal
 - `link_prediction`
-  - returns embedding matrix under `payload.values`
+  - returns embedding matrix in `payload.values`
   - returns validation AUC in `payload.meta.val_auc` when `valid.txt` is available
 - `temporal_structural`
   - returns a single scalar regularization score in `payload.values`
@@ -176,7 +180,7 @@ Notes per method:
 A successful run prints:
 
 ```text
-M1 run finished: <method>
+Run finished: <method>
 runtime_s: <value>
 peak_mem_mb: <value>
 ```
